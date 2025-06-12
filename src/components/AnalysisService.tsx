@@ -23,7 +23,7 @@ const AnalysisService: React.FC<AnalysisServiceProps> = ({
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       // 生成分析结果
-      const cardNames = selectedCards.map(card => card.name).join('、');
+      //const cardNames = selectedCards.map(card => card.name).join('、');
       const analysisResult = generateAnalysis(selectedCards);
       
       // 返回结果
