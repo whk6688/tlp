@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { TarotCard, getShuffledCards } from './assets/tarot-cards';
+import { useState } from 'react';
+import { TarotCard } from './assets/tarot-cards';
 import TarotDeck from './components/TarotDeck';
 import TarotReading from './components/TarotReading';
 import AnalysisService from './components/AnalysisService';
@@ -9,7 +9,7 @@ function App() {
   const [selectedCards, setSelectedCards] = useState<TarotCard[]>([]);
   const [analysisResult, setAnalysisResult] = useState<string>('');
   const [showReading, setShowReading] = useState<boolean>(false);
-  const [isAnalyzing, setIsAnalyzing] = useState<boolean>(false);
+  const [setIsAnalyzing] = useState<boolean>(false);
 
   // 处理卡片选择
   const handleCardSelected = (card: TarotCard) => {
