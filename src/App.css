@@ -1,0 +1,382 @@
+/* 全局样式 */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen', sans-serif;
+  background: #121438;
+  color: #f0f0f0;
+  overflow-x: hidden;
+}
+
+.App {
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.App-header {
+  padding: 20px;
+  background: linear-gradient(135deg, #2a1a5e 0%, #4b2d8b 100%);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.App-header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: #f0d890;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.App-header p {
+  margin: 10px 0 0;
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* 塔罗牌区域样式 */
+.tarot-section {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.5s ease;
+}
+
+.tarot-section.with-reading {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.tarot-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  margin-bottom: 30px;
+  perspective: 1000px;
+}
+
+/* 洗牌动画样式 */
+.shuffle-animation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.shuffling-deck {
+  position: relative;
+  width: 120px;
+  height: 180px;
+}
+
+.shuffling-card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #2a1a5e 0%, #4b2d8b 100%);
+  border: 2px solid #f0d890;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  animation: shuffle 0.8s infinite alternate ease-in-out;
+}
+
+@keyframes shuffle {
+  0% {
+    transform: translateX(-10px) translateY(-5px) rotate(-5deg);
+  }
+  100% {
+    transform: translateX(10px) translateY(5px) rotate(5deg);
+  }
+}
+
+.shuffle-text {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #f0d890;
+}
+
+/* 塔罗牌组样式 */
+.tarot-deck {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s ease;
+}
+
+.tarot-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 140px;
+  transform: translate(-50%, -50%);
+  transition: all 0.5s ease;
+  cursor: pointer;
+  transform-style: preserve-3d;
+}
+
+.tarot-deck.dealt .tarot-card:hover {
+  transform: translateX(calc((var(--index) % 7 - 3) * 60px)) 
+             translateY(calc(Math.floor(var(--index) / 7) * 100px)) 
+             rotate(calc(var(--random) * 4 - 2)deg) 
+             scale(1.05);
+  box-shadow: 0 0 20px rgba(240, 216, 144, 0.7);
+  z-index: 10;
+}
+
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #2a1a5e 0%, #4b2d8b 100%);
+  border: 2px solid #f0d890;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  backface-visibility: hidden;
+  background-image: url('https://i.imgur.com/QzFcbGQ.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.tarot-card.selected {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* 选择指示器 */
+.selection-indicator {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(42, 26, 94, 0.8);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 1rem;
+  color: #f0d890;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* 重新洗牌按钮 */
+.reshuffle-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: #4b2d8b;
+  color: #f0d890;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.reshuffle-button:hover {
+  background: #5d3ba0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* 解读区域样式 */
+.reading-container {
+  width: 40%;
+  min-width: 300px;
+  background: rgba(42, 26, 94, 0.5);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tarot-reading h2 {
+  color: #f0d890;
+  margin-top: 0;
+  font-size: 1.8rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.selected-cards-display {
+  display: flex;
+  justify-content: space-around;
+  margin: 30px 0;
+}
+
+.card-slot {
+  width: 100px;
+  height: 180px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.selected-card-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.selected-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.selected-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.card-front {
+  background: #fff;
+  color: #333;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.card-front img {
+  width: 90%;
+  height: 70%;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.card-front h3 {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.card-position {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #f0d890;
+}
+
+.empty-slot {
+  width: 100%;
+  height: 100%;
+  border: 2px dashed rgba(240, 216, 144, 0.5);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(240, 216, 144, 0.7);
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* 分析区域样式 */
+.analysis-section {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(240, 216, 144, 0.3);
+}
+
+.analysis-button {
+  background: linear-gradient(135deg, #f0d890 0%, #e6a417 100%);
+  color: #2a1a5e;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.analysis-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.analysis-button:disabled {
+  background: #888;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.analysis-result {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(240, 216, 144, 0.1);
+  border-radius: 10px;
+  animation: fadeIn 0.5s ease;
+}
+
+.analysis-result h3 {
+  color: #f0d890;
+  margin-top: 0;
+}
+
+.analysis-result p {
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .tarot-section.with-reading {
+    flex-direction: column;
+  }
+  
+  .tarot-container {
+    height: 400px;
+  }
+  
+  .reading-container {
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .selected-cards-display {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .card-slot {
+    margin-bottom: 20px;
+  }
+}
