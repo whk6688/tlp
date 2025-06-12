@@ -24,7 +24,7 @@ const AnalysisService: React.FC<AnalysisServiceProps> = ({
       
       // 生成分析结果
       const cardNames = selectedCards.map(card => card.name).join('、');
-	  console.log(cardNames)
+	  console.log(cardNames);
       const analysisResult = generateAnalysis(selectedCards);
       
       // 返回结果
