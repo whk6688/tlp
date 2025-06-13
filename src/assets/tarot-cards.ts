@@ -212,7 +212,7 @@ const createMinorArcana = (): TarotCard[] => {
         name: `${suit}${court}`,
         type: "minor",
         suit: suit,
-        value: 11 + index, // 11=侍从, 12=骑士, 13=王后, 14=国王
+        value: 11 + index, // 11=侍从, 12=骑士, 13=王后, 14=国王 
         image: suitImages[suit as keyof typeof suitImages].replace("01", `${11 + index}`),
         description: `${suit}${court}，代表${suit}元素中的${court}能量。`
       });
