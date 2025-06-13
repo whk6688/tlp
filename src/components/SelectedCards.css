@@ -1,0 +1,169 @@
+.selected-cards-section {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.selected-cards-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 20px;
+}
+
+/* 选中牌容器 */
+.selected-card-container {
+  width: 100px;
+  height: 180px;
+  perspective: 1000px;
+  cursor: pointer;
+  position: relative;
+}
+
+.selected-card-container.empty {
+  cursor: default;
+}
+
+/* 选中牌 */
+.selected-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+}
+
+.selected-card.flipped {
+  transform: rotateY(180deg);
+}
+
+/* 牌正反面 */
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.card-front {
+  background: #fff;
+  color: #333;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.card-front img {
+  width: 90%;
+  height: 70%;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.card-front h3 {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.card-position {
+  position: absolute;
+  bottom: -25px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  color: #f0d890;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* 空位占位符 */
+.empty-slot {
+  width: 100%;
+  height: 100%;
+  border: 2px dashed rgba(240, 216, 144, 0.5);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(240, 216, 144, 0.7);
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* 分析按钮 */
+.analysis-button {
+  background: linear-gradient(135deg, #f0d890 0%, #e6a417 100%);
+  color: #2a1a5e;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  pointer-events: none;
+  margin-top: 20px;
+}
+
+.analysis-button.visible {
+  opacity: 1;
+  pointer-events: auto;
+  animation: fadeInButton 0.5s ease forwards;
+}
+
+@keyframes fadeInButton {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.analysis-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .selected-cards-area {
+    gap: 20px;
+  }
+  
+  .selected-card-container {
+    width: 80px;
+    height: 140px;
+  }
+  
+  .card-position {
+    font-size: 0.9rem;
+    bottom: -20px;
+  }
+  
+  .analysis-button {
+    padding: 10px 25px;
+    font-size: 1.1rem;
+  }
+}
