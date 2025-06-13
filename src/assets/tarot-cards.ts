@@ -233,5 +233,5 @@ export const getShuffledCards = (): TarotCard[] => {
 // 获取牌背图案URL - 统一的太阳、绿地、河流和花草图案
 export const getCardBackPattern = (): string => {
   // 使用描绘有太阳、绿地、河流和花草的塔罗牌背面图案
-  return "./bg.jpg";
+  return "../assets/bg.jpg";
 };
