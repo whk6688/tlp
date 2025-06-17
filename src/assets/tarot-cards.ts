@@ -230,9 +230,9 @@ export const getShuffledCards = (): TarotCard[] => {
   return [...tarotCards].sort(() => Math.random() - 0.5);
 };
 
-import { imgurl } from '../assets/bj.jpg';
+
 // 获取牌背图案URL - 统一的太阳、绿地、河流和花草图案
 export const getCardBackPattern = (): string => {
   // 使用描绘有太阳、绿地、河流和花草的塔罗牌背面图案
-  return {imgurl};
+  return "/card-back.jpg";
 };
