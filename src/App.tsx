@@ -63,8 +63,7 @@ function App() {
           setTimeout(() => {
             setMovingCard(prev => ({
               ...prev,
-              isFlipping: true,
-			  isMoving: false,
+              isFlipping: true
             }));
             
             // 翻转动画完成后添加卡片到选中区域
