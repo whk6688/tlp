@@ -153,7 +153,7 @@ function App() {
           <div 
             className={`card-moving ${movingCard.isFlipping ? 'flipping' : ''}`}
             style={{
-              backgroundImage: !movingCard.isFlipping ? `url(${cardBackUrl})` : 'none',
+              backgroundImage: 'none',
               left: movingCard.sourceX,
               top: movingCard.sourceY,
               transform: `translate(-50%, -50%) ${movingCard.isFlipping ? 'rotateY(180deg)' : ''}`,
