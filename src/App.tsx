@@ -68,7 +68,7 @@ function App() {
             
             // 翻转动画完成后添加卡片到选中区域
             setTimeout(() => {
-              setSelectedCards(prev => [...prev, card]);
+              //setSelectedCards(prev => [...prev, card]);
               setMovingCard({
                 card: null,
                 sourceX: 0,
