@@ -63,12 +63,21 @@ function App() {
           setTimeout(() => {
             setMovingCard(prev => ({
               ...prev,
-              isFlipping: true
+              isFlipping: false
             }));
             
             // 翻转动画完成后添加卡片到选中区域
             setTimeout(() => {
               setSelectedCards(prev => [...prev, card]);
+              setMovingCard({
+                card: null,
+                sourceX: 0,
+                sourceY: 0,
+                targetX: 0,
+                targetY: 0,
+                isMoving: false,
+                isFlipping: false
+              });
               setSelectedCardAnimating(false);
             }, 1000); // 翻转动画持续时间
           }, 500); // 移动到位置后的延迟
