@@ -78,7 +78,7 @@ function App() {
                 isMoving: false,
                 isFlipping: false
               });
-              setSelectedCardAnimating(false);
+              //setSelectedCardAnimating(false);
             }, 1000); // 翻转动画持续时间
           }, 500); // 移动到位置后的延迟
         }, 50); // 设置初始位置后的短暂延迟
@@ -153,10 +153,9 @@ function App() {
           <div 
             className={`card-moving ${movingCard.isFlipping ? 'flipping' : ''}`}
             style={{
-              backgroundImage: !movingCard.isFlipping ? `url(${cardBackUrl})` : 'none',
               left: movingCard.sourceX,
               top: movingCard.sourceY,
-              transform: `${movingCard.isFlipping ? 'rotateY(180deg)' : ''}`,
+              transform: `translate(-50%, -50%) ${movingCard.isFlipping ? 'rotateY(180deg)' : ''}`,
             }}
           >
             {movingCard.isFlipping && (
