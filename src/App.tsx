@@ -63,7 +63,8 @@ function App() {
           setTimeout(() => {
             setMovingCard(prev => ({
               ...prev,
-              isFlipping: true
+              isFlipping: true,
+			  isMoving: false,
             }));
             
             // 翻转动画完成后添加卡片到选中区域
@@ -153,7 +154,7 @@ function App() {
           <div 
             className={`card-moving ${movingCard.isFlipping ? 'flipping' : ''}`}
             style={{
-              backgroundImage: 'none',
+              backgroundImage: !movingCard.isFlipping ? `url(${cardBackUrl})` : 'none',
               left: movingCard.sourceX,
               top: movingCard.sourceY,
               transform: `translate(-50%, -50%) ${movingCard.isFlipping ? 'rotateY(180deg)' : ''}`,
