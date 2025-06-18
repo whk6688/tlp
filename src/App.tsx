@@ -68,7 +68,7 @@ function App() {
             
             // 翻转动画完成后添加卡片到选中区域
             setTimeout(() => {
-              //setSelectedCards(prev => [...prev, card]);
+              setSelectedCards(prev => [...prev, card]);
               setMovingCard({
                 card: null,
                 sourceX: 0,
@@ -78,7 +78,7 @@ function App() {
                 isMoving: false,
                 isFlipping: false
               });
-              setSelectedCardAnimating(false);
+              #setSelectedCardAnimating(false);
             }, 1000); // 翻转动画持续时间
           }, 500); // 移动到位置后的延迟
         }, 50); // 设置初始位置后的短暂延迟
